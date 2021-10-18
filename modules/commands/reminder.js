@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "Mirai Team",
 	description: "Nhắc nhở bạn về việc gì đấy trong khoảng thời gian cố định",
-	commandCategory: "Nhắc nhở",
+	commandCategory: "timer",
 	usages: "[Time] [Text] ",
 	cooldowns: 5
 };

@@ -1,22 +1,26 @@
+﻿const fs = require("fs");
 module.exports.config = {
-  name: "goiadmin",
-  version: "1.0.0",
-  hasPermssion: 0,
-  credits: "JRT",
-  description: "Bot sẽ rep ng tag admin hoặc rep ng tagbot ",
-  commandCategory: "Không cần dấu lệnh",
-  usages: "",
-  cooldowns: 1
+name: "Gọi admin",
+	version: "1.0.1",
+	hasPermssion: 0,
+	credits: "VanHung",
+	description: "Gọi admin",
+	commandCategory: "Không cần dấu lệnh",
+	usages: "noprefix",
+	cooldowns: 5,
 };
-module.exports.handleEvent = function({ api, event }) {
-  if (event.senderID !== "") {
-    var aid = ["100048524510645"];
-    for (const id of aid) {
-    if ( Object.keys(event.mentions) == id) {
-      var msg = ["Tag Admin có gì ko?","Sao?? Làm ơn nhắn qua mess hoặc zalo để liên hệ ông chủ!!","Sao gọi chủ tôi có việc gì?","Hiện ông chủ tôi đang bận hãy sử dụng callad để liên hệ","Hãy dùng lệnh ad hoặc adm để biết thông tin liên hệ chủ tôi","Tag nữa ăn đấm","Tag làm gì?","Sao? Tag có việc gì?","Gọi vợ chồng anh/cô ấy có việc gì?","Thích tag ko :)","Tag gì lắm vậy? Bộ ko cho chủ tao xin phút gây bình yên à?","Sao tag có việc gì ngồi xuống uống tách trà tâm sự","Anh/cô ấy đang bận ? Có chi ko?","Hiện tại ông/bà chủ đang bận, có gì để lại tin nhắn qua người đó !!","Hãy dùng callad để liên hệ với admin >,<"];
-      return api.sendMessage({body: msg[Math.floor(Math.random()*msg.length)]}, event.threadID, event.messageID);
-    }
-    }}
-};
-module.exports.run = async function({}) {
+module.exports.event = function({ api, event }) {
+	var { threadID, messageID } = event;
+	if (event.body.indexOf("@[ / ] • ℬℴ𝓉 ℋℴ𝒶̀𝒾 ℬ𝒶̉ℴ ʕ•ﻌ•ʔ 💜")==0 || (event.body.indexOf("@Hồ Thanh Hoài Bảo")==0) || (event.body.indexOf("Bảo")==0) ||
+(event.body.indexOf("Hoài Bảo")==0) ||
+(event.body.indexOf("hoài bảo")==0) ||
+(event.body.indexOf("bảo")==0)) {
+  var msg = {
+    body: "Gọi admin làm lồn gì có việc thì nhắn tin qua fb https://www.facebook.com/HoaiBao.IN4 \nGọi nữa ăn đấm đấy 🙂", 
   }
+			return api.sendMessage(msg, threadID, messageID);
+		}
+	}
+	module.exports.run = function({ api, event, client, __GLOBAL }) {
+
+	}

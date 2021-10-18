@@ -1,27 +1,30 @@
 module.exports.config = {
 	name: "ping",
-	version: "1.0.5",
+	version: "0.0.3",
 	hasPermssion: 1,
 	credits: "Mirai Team",
 	description: "tag toàn bộ thành viên",
 	commandCategory: "system",
-	usages: "[Text]",
-	cooldowns: 80
+	usages: "ping [Text]",
+	cooldowns: 5
 };
 
-module.exports.run = async function({ api, event, args }) {
+module.exports.run = async function({ api, event, args, Threads }) {
 	try {
+		var listUserID = (await Threads.getInfo(event.threadID)).participantIDs;
 		const botID = api.getCurrentUserID();
-		var listAFK, listUserID;
-		global.moduleData["afk"] && global.moduleData["afk"].afkList ? listAFK = Object.keys(global.moduleData["afk"].afkList || []) : listAFK = []; 
-		listUserID = event.participantIDs.filter(ID => ID != botID && ID != event.senderID);
-		listUserID = listUserID.filter(item => !listAFK.includes(item));
-		var body = (args.length != 0) ? args.join(" ") : "Vui Nhỉ", mentions = [], index = 0;
-		for(const idUser of listUserID) {
-			body = "‎" + body;
-			mentions.push({ id: idUser, tag: "‎", fromIndex: index - 1 });
-			index -= 1;
-		}
+		listUserID = listUserID.filter(ID => ID != botID && ID != event.senderID);
+		var body = (args.length != 0) ? args.join(" ") : "NaCl Cute UwU <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 ", mentions = [], index = 0;
+		
+	for (idUser of listUserID) {
+		if (index == body.length) body += "  ";
+		mentions.push({
+			tag: body[index],
+			id: idUser,
+			fromIndex: -1
+		})
+		index += 1;
+			}
 
 		return api.sendMessage({ body, mentions }, event.threadID, event.messageID);
 

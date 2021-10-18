@@ -1,26 +1,21 @@
-const request = require('request');
-
 module.exports.config = {
   name: "iss",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "BerVer",
   description: "Xem toạ độ mà tàu vũ trụ đang lưu lạc",
-  commandCategory: "news",
+  commandCategory: "space",
   usages: "iss",
   cooldowns: 5,
-  dependencies: {
-    "request": ""
-  }
+  dependencies: {"request":""}
 };
 
 module.exports.run = function({
   api,
   event,
-  args,
-  client,
-  __GLOBAL
+  args
 }) {
+  const request = global.nodemodule['request'];
   return request(`http://api.open-notify.org/iss-now.json`, (err, response, body) => {
     if (err) throw err;
     var jsonData = JSON.parse(body);

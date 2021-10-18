@@ -2,9 +2,9 @@ module.exports.config = {
 	name: "misthy",
 	version: "1.0.0",
 	hasPermssion: 0,
-	credits: "Thanh dz",
-	description: "Random ảnh Misthy :))",
-	commandCategory: "hình ảnh",
+	credits: "VanHung",
+	description: "Ảnh misthy",
+	commandCategory: "Hình Ảnh",
 	usages: "misthy",
 	cooldowns: 5
 };
@@ -13,10 +13,11 @@ module.exports.run = async ({ api, event }) => {
 	const axios = require('axios');
 	const request = require('request');
 	const fs = require("fs");
-	axios.get('https://misthy.hungdz30cm.repl.co/').then(res => {
+	axios.get('http://vinhnguyenofficial.ga/misthy-1.php').then(res => {
 	let ext = res.data.data.substring(res.data.data.lastIndexOf(".") + 1);
 	let callback = function () {
 					api.sendMessage({
+						body: `Ảnh misthy 🥳🥳`,
 						attachment: fs.createReadStream(__dirname + `/cache/misthy.${ext}`)
 					}, event.threadID, () => fs.unlinkSync(__dirname + `/cache/misthy.${ext}`), event.messageID);
 				};

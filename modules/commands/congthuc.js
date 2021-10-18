@@ -4,18 +4,19 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "DungUwU",
     description: "Công thức toán - vật lý trọn bộ",
-    commandCategory: "study",
+    commandCategory: "general",
     usages: "congthuc toan/vatly",
     cooldowns: 5,
-    dependencies: {"request": "", 
-                    "fs-extra": ""
-        }
+    dependencies: {
+        "request":"",
+        "fs-extra":""
+    }
 };
 
 
 module.exports.handleReply = async function({ api, event, handleReply, client }) {
-const { createWriteStream, createReadStream, unlinkSync } = require("fs-extra");
-const request = require("request");
+const request = global.nodemodule["request"];
+const { createWriteStream, createReadStream, unlinkSync } = global.nodemodule["fs-extra"];
 var link = "";
 var msg = "";
     switch(handleReply.type) {
@@ -193,7 +194,7 @@ module.exports.run = ({ event, api, args, client, utils }) => {
                 "\n8. Tọa độ trong không gian" +
                 "\n\n» Hãy reply tin nhắn và chọn theo số «"
             , event.threadID, (error, info) => {
-                client.handleReply.push({
+                global.client.handleReply.push({
                     name: this.config.name,
                     messageID: info.messageID,
                     author: event.senderID,

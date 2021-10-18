@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "NTKhang",
 	description: "Toilet 🚽",
-	commandCategory: "hình ảnh",
+	commandCategory: "system",
 	usages: "rank",
 	cooldowns: 5,
 	dependencies: {

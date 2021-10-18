@@ -1,15 +1,10 @@
 module.exports.config = {
 	name: "restart",
 	version: "1.0.0",
-	hasPermssion: 2,
-	credits: "manhIT",
-	description: "Khởi động lại Bot",
+	hasPermssion: 0,
+	credits: "Mirai Team",
+	description: "Khởi Động Lại Bot.",
 	commandCategory: "system",
-	usages: "",
-	cooldowns: 5
-};
-
-module.exports.run = async ({ api, event, args }) => {
-	const { threadID, messageID } = event;
-	return api.sendMessage(`Restarted successfully`, threadID, () => process.exit(1));
-}
+	cooldowns: 0
+        };
+module.exports.run = ({event, api}) =>api.sendMessage("Success ✅\nVui lòng đợi vài giây để bot khởi động lại hệ thống.",event.threadID, () =>process.exit(1))

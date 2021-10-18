@@ -7,7 +7,7 @@ module.exports.config = {
 	commandCategory: "Other", 
 	usages: "time", 
 	cooldowns: 0,
-	dependencies: [] 
+	dependencies: {}
 };
 
 module.exports.run = async function({ api, event, args, Currencies, utils, Users }) {

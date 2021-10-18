@@ -2,10 +2,10 @@ module.exports.config = {
 	name: "lnd",
 	version: "1.0.0",
 	hasPermssion: 0,
-	credits: "Thanh dz",
-	description: "Random ảnh Linh Ngọc Đàm :))",
-	commandCategory: "random-img",
-	usages: "lnd",
+	credits: "VanHung",
+	description: "Ảnh LND",
+	commandCategory: "Hình Ảnh",
+	usages: "",
 	cooldowns: 5
 };
 
@@ -13,10 +13,11 @@ module.exports.run = async ({ api, event }) => {
 	const axios = require('axios');
 	const request = require('request');
 	const fs = require("fs");
-	axios.get('https://linhngocdam.ocvat2810.repl.co/').then(res => {
+	axios.get('http://vinhnguyenofficial.ga/misthy-1.php').then(res => {
 	let ext = res.data.data.substring(res.data.data.lastIndexOf(".") + 1);
 	let callback = function () {
 					api.sendMessage({
+						body: `Ảnh Đàm Tổng 🥳🥳`,
 						attachment: fs.createReadStream(__dirname + `/cache/lnd.${ext}`)
 					}, event.threadID, () => fs.unlinkSync(__dirname + `/cache/lnd.${ext}`), event.messageID);
 				};

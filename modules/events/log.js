@@ -15,12 +15,13 @@ module.exports.run = async function({ api, event, Threads }) {
     var formReport =  "=== Bot Notification ===" +
                         "\n\n» Thread mang ID: " + event.threadID +
                         "\n» Hành động: {task}" +
-                        "\n» Hành động được tạo bởi userID: " + event.author +
+                        "\n» Hành động được tạo bởi userID: https://www.facebook.com/" + event.author +
                         "\n» " + Date.now() +" «",
         task = "";
     switch (event.logMessageType) {
         case "log:thread-name": {
-            const oldName = (await Threads.getData(event.threadID)).name
+            const oldName = (await Threads.getData(event.threadID)).name || "Tên không tồn tại",
+                    newName = event.logMessageData.name || "Tên không tồn tại";
             task = "Người dùng thay đổi tên nhóm từ: '" + oldName + "' thành '" + newName + "'";
             await Threads.setData(event.threadID, {name: newName});
             break;

@@ -11,7 +11,7 @@ module.exports.config = {
 
 module.exports.handleReply = ({ api, event, args, handleReply }) => {
 	if(event.senderID != handleReply.author) return; 
-	const fs = require("fs-extra");
+	const fs = global.nodemodule["fs-extra"];
   var arrnum = event.body.split(" ");
   var msg = "";
   var nums = arrnum.map(n => parseInt(n));
@@ -46,18 +46,23 @@ module.exports.run = async function({ api, event, args, Threads }) {
 	var msg = `
   👉Module code by NTKhang👈
 Cách dùng lệnh:
+
 •Key: start <text>
 •Tác dụng: Lọc ra file cần xóa có ký tự bắt đầu tùy chọn
 •Ví dụ: cache rank
+
 •Key: ext <text>
 •Tác dụng: Lọc ra file cần xóa có đuôi tùy chọn
 •Ví dụ: cache png
+
 •Key: <text>
 •Tác dụng: lọc ra các file trong tên có text tùy chỉnh
 •Ví dụ: cache a
+
 •Key: để trống
 •Tác dụng: lọc ra tất cả các file trong cache
 •Ví dụ: cache
+
 •Key: help
 •Tác dụng: xem cách dùng lệnh
 •Ví dụ: cache help`;

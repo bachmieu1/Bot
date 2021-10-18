@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "HungCho (Khánh Milo Fix)",
     description: "Các cài đặt của nhóm chat.",
-	commandCategory: "box",
+	commandCategory: "Group",
 	usages: "[name/emoji/admin/image/info]",
 	cooldowns: 1,
 	dependencies: {

@@ -1,7 +1,8 @@
 module.exports.config = {
-	name: "tid",	version: "1.0.0", 
+	name: "tid",
+	version: "1.0.0", 
 	hasPermssion: 0,
-	credits: "NTKhang",
+	credits: "LTChi",
 	description: "Lấy id box", 
 	commandCategory: "group",
 	usages: "tid",

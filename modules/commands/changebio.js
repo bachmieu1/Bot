@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "change bio",
+	name: "setbio",
 	version: "1.0.0",
 	hasPermssion: 2,
 	credits: "NTKhang",

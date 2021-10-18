@@ -7,10 +7,10 @@ module.exports.config = {
 	commandCategory: "Economy",
 	usages: "lucky 5",
     cooldowns: 5,
-    dependencies: [],
+    dependencies: {},
 };
 
-module.exports.run = async ({ event, api, Currencies,args }) => {
+module.exports.run = async ({ event, api, Currencies, args }) => {
  const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 };

@@ -2,18 +2,18 @@ module.exports.config = {
   name: "out",
   version: "1.0.0",
   hasPermssion: 2,
-  credits: "HungCho",
-  description: "out box",
+  credits: "HungCho & Mod by VanHung",
+  description: "Out theo id box",
   commandCategory: "Admin",
-  usages: "out [tid]",
+  usages: "out",
   cooldowns: 3
 };
 
 module.exports.run = async function({ api, event, args }) {
-    const tid = args.join(" ")
-   let namee = await api.getThreadInfo(tid)
-  if (!tid) return api.removeUserFromGroup(api.getCurrentUserID(), event.threadID);
-
-else return api.removeUserFromGroup(api.getCurrentUserID(), tid, () => api.sendMessage("💦Bot đã rời nhóm này", event.threadID, event.messageID));
-
+	const moment = require("moment-timezone");
+	var time = moment.tz('Asia/Ho_Chi_Minh').format('HH:mm:ss || DD/MM/YYYY');
+    const name = args.join(" ")
+   let namee = await api.getThreadInfo(name)
+  if (!name) api.removeUserFromGroup(api.getCurrentUserID(), event.threadID)
+else api.sendMessage(`Bot đã nhận lệnh rời khỏi nhóm ${namee.name} từ Admin\nVào lúc: ${time}`, name, () => api.removeUserFromGroup(api.getCurrentUserID(), name)).then(api.sendMessage("💦Bot đã rời nhóm " + namee.name, event.threadID, event.messageID))
 }

@@ -10,7 +10,7 @@ module.exports.config = {
 	dependencies: "",
 };
 
-module.exports.run = async function({ api, Users, args, event }) {
+module.exports.run = async function({ api, Users, Threads, event }) {
  if (args[0] == "me")
   var id = [event.senderID]
   else id = [];

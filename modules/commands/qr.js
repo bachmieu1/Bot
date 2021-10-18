@@ -1,6 +1,6 @@
 module.exports.config = {
 	name: "qr",
-	version: "1.0.1",
+	version: "1.0.0",
 	hasPermssion: 0,
 	credits: "Mirai Team",
 	description: "Mã hoá văn bản bằng mã QR",
@@ -13,19 +13,10 @@ module.exports.config = {
 	}
 };
 
-module.exports.languages = {
-	"vi": {
-		"missingInput": "Hãy nhập đầu vào để có thể tạo qr code"
-	},
-	"en": {
-		"missingInput": "Enter input to create qr code"
-	}
-}
-
-module.exports.run = async function({ api, event, args, getText }) {
+module.exports.run = async function({ api, event, args }) {
 	const { createReadStream, unlinkSync } = global.nodemodule["fs-extra"]
 	const text = args.join(" ")
-	if(!text) return api.sendMessage(getText("missingInput"),event.threadID);
+	if(!text) return api.sendMessage("Nhập những thứ bạn muốn thêm vào mã qr",event.threadID);
 	var opt = { errorCorrectionLevel: 'H', type: 'image/png', quality: 0.3, scale: 50, margin: 1, color:{ dark: '#000000', light: '#ffffff' } };
 	 api.sendTypingIndicator(event.threadID, () => global.nodemodule["qrcode"].toFile(__dirname + '/cache/qr.png', text, opt, (err) => {
 		if (err) return err;

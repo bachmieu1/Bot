@@ -1,24 +1,24 @@
-const fs = require("fs");
 module.exports.config = {
-name: "Bủh",
+name: "bruh",
 	version: "1.0.1",
 	hasPermssion: 0,
-	credits: "dungkon",
-	description: "Bủh",
-	commandCategory: "Không cần dấu lệnh",
+	credits: "VanHung",
+	description: "hihihihi",
+	commandCategory: "NoCầnPrefix",
 	usages: "noprefix",
 	cooldowns: 5,
 };
 module.exports.handleEvent = function({ api, event }) {
+	const fs = global.nodemodule["fs-extra"];
 	var { threadID, messageID } = event;
-	if (event.body.indexOf("bruh")==0 || (event.body.indexOf("bủh")==0)) {
+	if (event.body.indexOf("bruh")==0 || (event.body.indexOf("Bruh")==0)) {
 		var msg = {
-				body: "",
-				attachment: fs.createReadStream(__dirname + `/cache/xxx.mp3`)
+				body: "bủh",
+				attachment: fs.createReadStream(__dirname + `/noprefix/xxx.mp3`)
 			}
-			return api.sendMessage(msg, threadID, messageID);
+			api.sendMessage(msg, threadID, messageID);
 		}
 	}
-	module.exports.run = function({ api, event, client, __GLOBAL }) {
+	module.exports.run = function({ api, event, client, global }) {
 
 }
